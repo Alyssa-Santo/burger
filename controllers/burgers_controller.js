@@ -17,7 +17,7 @@ router.get('/', function (req, res) {
 router.get('/burgers', function (req, res) {
 	burger.all(function (data) {
 		var hbsObject = { burgers: data };
-		// console.log(hbsObject);
+		console.log(hbsObject);
 		res.render('index', hbsObject);
 	});
 });
@@ -32,11 +32,29 @@ router.post('/burgers/create', function(req, res){
 router.put('/burgers/update/:id', function (req, res) {
 	var condition = 'id = ' + req.params.id;
 
-	console.log('condition', condition);
+	// console.log('condition', condition);
+	// console.log(req.body);
+	//console.log('this is the id picked up ' + req.params.id);
 
 	burger.update({ devoured: req.body.devoured }, condition, function () {
 		res.redirect('/burgers');
+
 	});
+
+	// burger.find({ where: { id: req.params.id } })
+	//   .on('success', function (project) {
+	//     // Check if record exists in db
+	//     if (project) {
+	//       project.updateAttributes({
+	//         devoured: req.body.devoured
+	//       })
+	//       .success(function () {
+	//       	console.log("It works!!")
+	//       })
+	//     }
+	//   })
+
+
 });
 
 module.exports = router;
