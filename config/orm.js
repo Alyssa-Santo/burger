@@ -27,7 +27,7 @@ var orm = {
 		var queryString = 'UPDATE ' + table;
 
 		queryString = queryString + ' SET ';
-		queryString = queryString + objToSql(objColVals);
+		queryString = queryString + ' devoured = ' + obColVals + ' ';
 		queryString = queryString + ' WHERE ';
 		queryString = queryString + condition;
 		console.log(condition);
